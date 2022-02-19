@@ -48,26 +48,29 @@ function countryMarkup(country) {
             <p class="card-position">
             <img src=${svg} width=200px alt=flag class="card-flag"><br>
             ${official}</p>
-            <p class="card-cap">Capital: ${capital}</p>
-            <p class="card-other">population: ${population}</p>
-            <p class="card-other">languages: ${Object.values(languages)}</p>
+            <p class="card-other">Capital: <span class="card-value">${capital}</span></p>
+            <p class="card-other">Population: <span class="card-value">${population}</span></p>
+            <p class="card-other">Languages: <span class="card-value">${Object.values(languages)}</span></p>
         </li>`;
     })
     .join('');
-  countryInfo.innerHTML = markup;
+    countryInfo.innerHTML = markup;
+    
 }
+
 function severalCountriesMarkup(country) {
   const markup = country
     .map(({ name: { official }, flags: { svg } }) => {
       return `<li class="list-item">
             <p class='list-position'>
-            <img src=${svg} width=30px alt=${official} class="list-flag">
+            <img src=${svg} width=50px alt=${official} class="list-flag">
             ${official}</p>
         </li>`;
     })
     .join('');
   countryList.innerHTML = markup;
 }
+
 
 function showNotification(type, message) {
   Notiflix.Notify[type](message);
